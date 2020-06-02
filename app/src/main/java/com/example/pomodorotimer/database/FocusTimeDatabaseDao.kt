@@ -25,6 +25,6 @@ interface FocusTimeDatabaseDao
     fun getAllFocusTimes(): LiveData<List<FocusTime>>
 
     @Query("SELECT * FROM focus_time_table ORDER BY focusTimeId DESC LIMIT 1")
-    fun getCurrentFocusTime():FocusTime?
+    fun getCurrentFocusTime():FocusTime
 
 }

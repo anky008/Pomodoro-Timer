@@ -42,8 +42,6 @@ fun formatFocusTimes(nights: List<FocusTime>, resources: Resources): Spanned {
             if (it.endTimeMilli != it.startTimeMilli) {
                 append(resources.getString(R.string.end_time))
                 append("\t${convertLongToDateString(it.endTimeMilli)}<br>")
-                append(resources.getString(R.string.quality))
-                append("\t${convertNumericQualityToString(it.isComplete, resources)}<br>")
                 append(resources.getString(R.string.hours_slept))
                 // Hours
                 append("\t ${it.endTimeMilli.minus(it.startTimeMilli) / 1000 / 60 / 60}:")

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodorotimer.focustimer.FocusTimerViewModel
 
-/*class FocusTimerViewModelFactory(
+class FocusTimerViewModelFactory(
     private val dataSource: FocusTimeDatabaseDao,
     private val application: Application
 ) : ViewModelProvider.Factory {
@@ -16,4 +16,4 @@ import com.example.pomodorotimer.focustimer.FocusTimerViewModel
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}*/
+}

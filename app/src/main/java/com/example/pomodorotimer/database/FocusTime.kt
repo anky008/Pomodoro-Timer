@@ -14,8 +14,5 @@ data class FocusTime(
     var startTimeMilli:Long=System.currentTimeMillis(),
 
     @ColumnInfo(name="end_time_milli")
-    var endTimeMilli:Long=startTimeMilli,
-
-    @ColumnInfo(name="is_complete")
-    var isComplete:Boolean=false
+    var endTimeMilli:Long=startTimeMilli
 )
