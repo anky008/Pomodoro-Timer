@@ -38,7 +38,6 @@ class FocusTimerViewModel(val database: FocusTimeDatabaseDao,
 
     private val viewModelJob=Job()
     private val uiScope= CoroutineScope(Dispatchers.Main + viewModelJob)
-    //private var currFocusTime=MutableLiveData<FocusTime?> ()
 
     val showStartButton=Transformations.map(_currentTime){
         it == START_TIME
@@ -68,16 +67,6 @@ class FocusTimerViewModel(val database: FocusTimeDatabaseDao,
 
     private val focusTimes=database.getAllFocusTimes()
 
-    val focusTimesString=Transformations.map(focusTimes){
-        formatFocusTimes(it,application.resources)
-    }
-
-    fun clearAll(){
-        uiScope.launch {
-            deleteAll()
-        }
-    }
-
     private suspend fun deleteAll() {
         return withContext(Dispatchers.IO){
             database.clear()
@@ -92,9 +81,9 @@ class FocusTimerViewModel(val database: FocusTimeDatabaseDao,
     }
 
     companion object {
-        private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME = 60000L
-        private const val START_TIME=60L
+        const val ONE_SECOND = 1000L
+        const val COUNTDOWN_TIME = 1500000L
+        const val START_TIME = 1500L
     }
 
     fun onTimerStart() {

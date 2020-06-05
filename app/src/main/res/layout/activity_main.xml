@@ -7,10 +7,12 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:id="@+id/focus_timer_fragment"
-        android:name="com.example.pomodorotimer.focustimer.FocusTimerFragment"
+        android:id="@+id/myNavHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_timer" />
+        tools:layout="@layout/fragment_timer"
+        app:navGraph='@navigation/navigation'
+        app:defaultNavHost="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

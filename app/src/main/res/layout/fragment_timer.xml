@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
@@ -8,75 +7,53 @@
             type="com.example.pomodorotimer.focustimer.FocusTimerViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@android:color/holo_blue_bright">
+
+        <Button
+            android:id="@+id/start_button"
+            style="@style/button_style"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_green_light"
+            android:enabled="@{focusTimerViewModel.showStartButton}"
+            android:onClick="@{() -> focusTimerViewModel.onTimerStart()}"
+            android:text="@string/start_button_text"
+            android:padding="10dp"
+            android:visibility="@{focusTimerViewModel.hideStartButton}" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/button_style"
+            android:text="@string/cancel_button_text"
+            android:background="@android:color/holo_red_light"
+            android:onClick="@{() -> focusTimerViewModel.onTimerCancel()}"
+            android:visibility="@{focusTimerViewModel.hideCancelButton}"
+            android:enabled="@{focusTimerViewModel.showCancelButton}"
+            android:layout_centerInParent="true"/>
 
         <TextView
             android:id="@+id/timer_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
             android:text="@{focusTimerViewModel.currentTimeString}"
-            android:textColor="@android:color/holo_red_light"
+            android:textColor="@android:color/holo_purple"
             android:textSize="40sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/start_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@id/start_button"
+            android:layout_centerHorizontal="true"
             tools:text="@string/timer_tools_text" />
 
-        <Button
-            android:id="@+id/start_button"
-            style="@style/button_style"
-            android:enabled="@{focusTimerViewModel.showStartButton}"
-            android:onClick="@{() -> focusTimerViewModel.onTimerStart()}"
-            android:text="@string/start_button_text"
-            android:visibility="@{focusTimerViewModel.hideStartButton}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/timer_text"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/cancel_button"
-            style="@style/button_style"
-            android:enabled="@{focusTimerViewModel.showCancelButton}"
-            android:onClick="@{() -> focusTimerViewModel.onTimerCancel()}"
-            android:text="@string/cancel_button_text"
-            android:visibility="@{focusTimerViewModel.hideCancelButton}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/timer_text"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/clear_button"
-            style="@style/button_style"
-            android:text="@string/clear_button_text"
-            android:onClick="@{() -> focusTimerViewModel.clearAll()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="@id/start_button"
-            app:layout_constraintRight_toRightOf="@id/cancel_button"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancel_button">
-
-            <TextView
-                android:id="@+id/focus_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{focusTimerViewModel.focusTimesString}" />
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/alarm_image_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_alarm"
+            android:layout_above="@id/timer_text"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 </layout>

@@ -1,9 +1,9 @@
-package com.example.pomodorotimer.database
+package com.example.pomodorotimer.focustimer
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.pomodorotimer.focustimer.FocusTimerViewModel
+import com.example.pomodorotimer.database.FocusTimeDatabaseDao
 
 class FocusTimerViewModelFactory(
     private val dataSource: FocusTimeDatabaseDao,

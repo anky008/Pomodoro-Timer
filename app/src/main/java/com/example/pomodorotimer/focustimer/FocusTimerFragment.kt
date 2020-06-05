@@ -1,20 +1,15 @@
 package com.example.pomodorotimer.focustimer
 
-import android.os.Build
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Toast
-import androidx.core.content.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.pomodorotimer.R
 import com.example.pomodorotimer.database.FocusTimeDatabase
-import com.example.pomodorotimer.database.FocusTimerViewModelFactory
 import com.example.pomodorotimer.databinding.FragmentTimerBinding
 import androidx.lifecycle.ViewModelProvider as ViewModelProvider
 
@@ -29,7 +24,11 @@ class FocusTimerFragment : Fragment() {
 
         val dataSource = FocusTimeDatabase.getInstance(application).focusTimeDatabaseDao
 
-        val viewModelFactory = FocusTimerViewModelFactory(dataSource, application)
+        val viewModelFactory =
+            FocusTimerViewModelFactory(
+                dataSource,
+                application
+            )
 
         val focusTimerViewModel =
             ViewModelProvider(
@@ -39,9 +38,11 @@ class FocusTimerFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
+        setHasOptionsMenu(true)
+
         focusTimerViewModel.buzzType.observe(viewLifecycleOwner, Observer { buzzType->
           if (buzzType!=FocusTimerViewModel.BuzzType.NO_BUZZ){
-              buzz(buzzType.pattern)
+             // buzz(buzzType.pattern)
               focusTimerViewModel.onBuzzComplete()
           }
         })
@@ -56,8 +57,8 @@ class FocusTimerFragment : Fragment() {
         return binding.root
     }
 
-    private fun buzz(pattern: LongArray) {
-        val buzzer = activity?.getSystemService<Vibrator>()
+    /*private fun buzz(pattern: LongArray) {
+        val buzzer = activity?.get<Vibrator>()
 
         buzzer?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -67,6 +68,23 @@ class FocusTimerFragment : Fragment() {
                 buzzer.vibrate(pattern, -1)
             }
         }
+    }*/
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+       super.onCreateOptionsMenu(menu,inflater)
+        inflater.inflate(R.menu.menu,menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.focus_streaks_menu_item -> navigate()
+            else -> super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
+    private fun navigate() {
+        Log.i("FocusTimerFragment","Yes ")
+        view?.findNavController()?.navigate(R.id.action_focusTimerFragment_to_focusTimesDisplayFragment)
+    }
 }

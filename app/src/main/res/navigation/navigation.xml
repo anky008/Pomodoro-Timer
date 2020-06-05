@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/focusTimerFragment">
+
+    <fragment
+        android:id="@+id/focusTimerFragment"
+        android:name="com.example.pomodorotimer.focustimer.FocusTimerFragment"
+        android:label="FocusTimerFragment" >
+        <action
+            android:id="@+id/action_focusTimerFragment_to_focusTimesDisplayFragment"
+            app:destination="@id/focusTimesDisplayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/focusTimesDisplayFragment"
+        android:name="com.example.pomodorotimer.displayfocustimes.DisplayFocusTimesFragment"
+        android:label="FocusTimesDisplayFragment" />
+</navigation>
