@@ -37,5 +37,7 @@
     <string name="clear_button_text">CLEAR</string>
     <string name="focus_streaks_text">Focus Streaks</string>
     <string name="about_app_text">About App</string>
+    <string name="clear_streak_text">Clear Records</string>
+    <string name="looks_like_you_have_been_relaxing_text">LOOKS LIKE YOU HAVE BEEN RELAXING!!</string>
 
 </resources>

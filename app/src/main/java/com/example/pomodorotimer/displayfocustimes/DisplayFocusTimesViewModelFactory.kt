@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pomodorotimer.database.FocusTimeDatabaseDao
 
 class DisplayFocusTimesViewModelFactory(
-    private val dataSource: FocusTimeDatabaseDao,
-    private val application: Application
+        private val dataSource: FocusTimeDatabaseDao,
+        private val application: Application
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

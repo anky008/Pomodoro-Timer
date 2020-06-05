@@ -10,8 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@android:color/holo_blue_bright">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/start_button"
@@ -49,10 +48,10 @@
 
         <ImageView
             android:id="@+id/alarm_image_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_alarm"
+            android:src="@drawable/ic_alarm_clock"
             android:layout_above="@id/timer_text"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
